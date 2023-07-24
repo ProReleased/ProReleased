@@ -10382,7 +10382,7 @@ task.spawn(function()
 	end
 end)
 
-local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/VoidRelease/VoidWare/main/VoidWare"))
+local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
 local function getLplrType()
 	local lplr_Type = 0
 	if whitelist["Owner"] ~= nil then
