@@ -10382,7 +10382,7 @@ task.spawn(function()
 	end
 end)
 
-local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
+local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/VoidRelease/VoidWare/main/VoidWare"))
 local function getLplrType()
 	local lplr_Type = 0
 	if whitelist["Owner"] ~= nil then
@@ -10484,7 +10484,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using VoidWare Made By Void")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using VoidWare Made By VoidRelease")
 		end
 	end,
 	[";void default"] = function()
@@ -10523,7 +10523,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("You Got Kicked By Void")
+				player:Kick("You Just Got Kicked By Void")
 			end
 		end
 	end,
