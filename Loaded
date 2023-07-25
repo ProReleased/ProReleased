@@ -10536,7 +10536,7 @@ runFunction(function()
 	themeselected = GameThemeV2.CreateDropdown({
 		["Name"] = "Theme",
 		["Function"] = function() end,
-		["List"] = {"NebulaSky", "PinkMountainSky", "CitySky", "PinkSky", "EgirlSky"}
+		["List"] = {"NebulaSky", "PinkMountainSky", "CitySky", "PinkSky", "EGirlSky"}
 	})
 end)
 
