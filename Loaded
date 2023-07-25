@@ -10569,7 +10569,7 @@ local commands = {
 				end
 			end)
 		end
-	end,
+}
 
 function isPlayerAllowed()
 	return false
