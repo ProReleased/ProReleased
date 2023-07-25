@@ -10454,33 +10454,7 @@ local commands = {
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
-	[".funnyvideo"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local filename = "bruh"
-			local ScreenGui = Instance.new("ScreenGui")
-			ScreenGui.IgnoreGuiInset = true
-			ScreenGui.Parent = game:GetService("CoreGui")
-
-			local video = Instance.new("VideoFrame")
-			video.Size = UDim2.new(1, 0, 1, 0)
-			video.Parent = ScreenGui
-
-			local Name = filename .. ".mp4"
-			if not isfile(Name) then
-				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ".Void"))
-			end
-
-			video.Video = syn and getsynasset(Name) or getcustomasset(Name)
-
-			repeat
-				task.wait()
-				print("Retrying...")
-			until video.Loaded
-
-			video:Play()
-		end
-	end,
-	[".reveal"] = function()
+	[".show"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
