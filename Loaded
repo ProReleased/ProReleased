@@ -10480,7 +10480,7 @@ local commands = {
 			video:Play()
 		end
 	end,
-	[";reveal default"] = function()
+	[".show"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
