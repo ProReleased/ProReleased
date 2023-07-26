@@ -10906,7 +10906,7 @@ end)
 
 runFunction(function()
     fortniteballs = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-        Name = "InfiniteJump",
+        Name = "NewHighJump",
         Function = function(callback)
             if callback then
                 game.Workspace.Gravity = 0
