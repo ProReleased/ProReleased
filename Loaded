@@ -10903,22 +10903,3 @@ runFunction(function()
 		end,
 	})
 end)
-
-runFunction(function()
-    fortniteballs = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-        Name = "NewHighJump",
-        Function = function(callback)
-            if callback then
-                game.Workspace.Gravity = 0
-                repeat task.wait(0.01)
-                    local player = game.Players.LocalPlayer
-                    local character = player.Character or player.CharacterAdded:Wait()
-                    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-                    humanoidRootPart.CFrame = humanoidRootPart.CFrame + Vector3.new(0, 10, 0)
-                until (not fortniteballs.Enabled)
-            else
-                game.Workspace.Gravity = 196.2
-            end
-        end
-    })
-end)
