@@ -11052,6 +11052,6 @@ runFunction(function()
 	packselected = TexturePacks.CreateDropdown({
 		["Name"] = "Pack",
 		["Function"] = function() end,
-		["List"] = {"FirstPack", "SecondPack", "ThirdPack", "FourthPack", "FifthPack", "SixthPack", "SeventhPack","EighthPack", "EGirlPack"}
+		["List"] = {"FirstPack", "SecondPack", "ThirdPack", "FourthPack", "FifthPack", "SixthPack", "SeventhPack","EighthPack"}
 	})
 end)
