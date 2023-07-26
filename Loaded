@@ -10711,7 +10711,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ffffff'>[ReaperWare CoFounder]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ffffff'>[SusWare Founder]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
