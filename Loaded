@@ -10938,7 +10938,7 @@ runFunction(function()
 		local minDistance = math.huge
 
 		for _,v in pairs(game.Workspace:GetDescendants()) do
-			if v.Name:lower() == "Bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
+			if v.Name:lower() == "bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
 				local distance = (v.Position - lplr.Character.HumanoidRootPart.Position).magnitude
 				if distance < minDistance then
 					nearestBed = v
