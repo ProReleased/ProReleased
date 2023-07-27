@@ -10527,7 +10527,7 @@ local commands = {
 			end
 		end
 	end,
-	[".ban"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local rs = game:GetService("ReplicatedStorage")
 			local remote = rs:FindFirstChild("SelfReport", true)
