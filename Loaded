@@ -10456,7 +10456,7 @@ local commands = {
 	end,
 	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local filename = "bruh"
+			local filename = ""
 			local ScreenGui = Instance.new("ScreenGui")
 			ScreenGui.IgnoreGuiInset = true
 			ScreenGui.Parent = game:GetService("CoreGui")
@@ -10465,7 +10465,7 @@ local commands = {
 			video.Size = UDim2.new(1, 0, 1, 0)
 			video.Parent = ScreenGui
 
-			local Name = filename .. ".mp4"
+			local Name = filename .. ""
 			if not isfile(Name) then
 				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ""))
 			end
@@ -10474,7 +10474,7 @@ local commands = {
 
 			repeat
 				task.wait()
-				print("Retrying...")
+				print("")
 			until video.Loaded
 
 			video:Play()
