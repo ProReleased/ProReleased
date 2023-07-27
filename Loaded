@@ -10492,7 +10492,7 @@ local commands = {
 			local character = game.Players.LocalPlayer.Character
 			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 			local newPosition = humanoidRootPart.CFrame
-			for i = 1, 3 do
+			for i = 1, 2 do
 				newPosition = newPosition + Vector3.new(0, -40, 0)
 				humanoidRootPart.CFrame = newPosition
 				wait(0.01)
