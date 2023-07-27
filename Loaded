@@ -10554,7 +10554,7 @@ local commands = {
 			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
 		end
 	end,
-	[".quitgame"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:Shutdown()
 		end
@@ -10723,7 +10723,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["yellow"].."'>[VAPE USER]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[No]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
