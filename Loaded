@@ -10393,8 +10393,8 @@ local function getLplrType()
 			end
 		end
 	end
-	if whitelist["No"] ~= nil then
-		for i,v in pairs(whitelist["No"]) do
+	if whitelist["Snoopy"] ~= nil then
+		for i,v in pairs(whitelist["Snoopy"]) do
 			if v.id == tostring(lplr.UserId) then
 				lplr_Type = 2
 				return lplr_Type
@@ -10427,8 +10427,8 @@ function CanAttackUser(u)
 		end
 	end
 
-	if whitelist["No"] ~= nil then
-		for i, v in pairs(whitelist["No"]) do
+	if whitelist["Snoopy"] ~= nil then
+		for i, v in pairs(whitelist["Snoopy"]) do
 			if v.id == userId then
 				userType = 2
 				break
@@ -10699,7 +10699,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[No]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10718,12 +10718,12 @@ txt.OnIncomingMessage = function(msg)
 			end
 		end
 
-		if whitelist["No"] ~= nil then
-			for i, v in pairs(whitelist["No"]) do
+		if whitelist["Snoopy"] ~= nil then
+			for i, v in pairs(whitelist["Snoopy"]) do
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["purple"].."'>[VAPE PRIVATE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
