@@ -10730,7 +10730,7 @@ end
 local skidDetected = {}
 runFunction(function()
     SkidDetector = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-        Name = "SkidDetector",
+        Name = "HackerDetector",
         Function = function(callback)
             if callback then
 				repeat task.wait() until game:IsLoaded()
@@ -10753,7 +10753,7 @@ runFunction(function()
                         for _, word in ipairs(words) do
                             if string.find(string.lower(msg), string.lower(word)) and not skidDetected[v.Name] then
                                 skidDetected[v.Name] = true
-                                warningNotification("Skid Detector", v.Name.."Is A Skid", 100) 
+                                warningNotification("Vape", v.Name.."Is Using Vape", 100) 
                                 break
                             end
                         end
