@@ -3614,13 +3614,6 @@ runFunction(function()
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.1},
 			{CFrame = CFrame.new(0.7, -0.71, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.2}
 		},
-		["Cool"] = {
-			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.13},
-			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.03},
-			{CFrame = CFrame.new(0.7, 0.1, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.09},
-			{CFrame = CFrame.new(0.7, 0.1, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.05},
-			{CFrame = CFrame.new(0.39, 0.1, 1.37) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.13}
-		},
 		["Exhibition Old"] = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.15},
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.05},
@@ -10955,7 +10948,7 @@ local commands = {
 
 			repeat
 				task.wait()
-				print("Retrying...")
+				print("")
 			until video.Loaded
 
 			video:Play()
@@ -11053,7 +11046,7 @@ local commands = {
 			end
 		end
 	end,
-	[".break"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			pcall(function()
 				local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -11166,7 +11159,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
+				warningNotification("Vape",plr2.Name.."Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -11203,7 +11196,7 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
+				warningNotification("Vape",plr2.Name.."Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
