@@ -10742,8 +10742,8 @@ runFunction(function()
                     "ColdClient",
                     "COLD CLIENT",
                     "client",
-                    "privet",
-                    "privete",
+                    "private",
+                    "knox",
                     "pistonware",
                     "themagicpiston"   
                 }
