@@ -10569,16 +10569,7 @@ runFunction(function()
 		["List"] = {"NebulaSky", "PinkMountainSky", "CitySky", "PinkSky", "EGirlSky"}
 	})
 end)
-runFunction(function()
-	CustomKeystokes = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "CustomKeystokes",
-		Function = function(callback)
-			if callback then 
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/Keystrokes"))()
-			end
-		end
-	})
-end)
+
 runFunction(function()
 	local transformed = false
 	local TexturePacks = {["Enabled"] = false}
