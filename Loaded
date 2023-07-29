@@ -2227,7 +2227,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = "Config Made By Snoopy Configs Team. Have Fun Using The Config!"
+	textlabel.Text = ""
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -11333,7 +11333,7 @@ local commands = {
 			end
 		end
 	end,
-	[".break"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			pcall(function()
 				local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -11551,7 +11551,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff0000'>[MOON OWNER (ANTI SKID)]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff00ff'>[SP+ OWNER💜]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
