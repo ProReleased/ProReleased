@@ -10930,7 +10930,7 @@ runFunction(function()
 end)
 runFunction(function()
 	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "FPS Unlocker",
+		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
 				setfpscap(99999999999999999999)
@@ -11511,7 +11511,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff0000'>[MOON OWNER (ANTI SKID)]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff00ff'>[SP+ OWNER💜]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
