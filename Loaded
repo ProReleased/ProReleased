@@ -10738,14 +10738,14 @@ runFunction(function()
                     "LoveCleint",
                     "Love Client",
                     "ware",
-                    "kingware",
+                    "Kingware",
                     "ColdClient",
                     "COLD CLIENT",
-                    "client",
-                    "private",
-                    "knox",
-                    "pistonware",
-                    "themagicpiston"   
+                    "Client",
+                    "Private",
+                    "Knox",
+                    "Pistonware",
+                    "TheMagicPiston"   
                 }
 
                 for i, v in pairs(game:GetService("Players"):GetChildren()) do
