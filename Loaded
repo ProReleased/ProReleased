@@ -10965,7 +10965,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("I Use KP+")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using Vape Made By 7GrandDadPGN")
 		end
 	end,
 	[".void"] = function()
@@ -11004,7 +11004,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("Snoopy Owns You")
+				player:Kick("7GrandDadPGN")
 			end
 		end
 	end,
@@ -11166,7 +11166,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using KP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -11203,16 +11203,16 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using KP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
 					color = "yellow",
-					tag = "KP+ USER"
+					tag = "VAPE USER"
 				})
 			end
 		end
-		if message.Text:lower():find("alaaza") or message.Text:lower():find("you are now privately chatting") then 
+		if message.Text:lower():find("alaaza") or message.Text:lower():find("You Are Using Vape") then 
 			p.PrefixText = ""
 			msg.Text = ""
 			return p
@@ -11239,7 +11239,7 @@ txt.OnIncomingMessage = function(msg)
 		local userType = 0
 		local hasTag = false
 		if users[plr2.UserId] ~= nil then
-			p.PrefixText = "<font color='"..colors["yellow"].."'>[SP+ USER]</font> " .. msg.PrefixText
+			p.PrefixText = "<font color='"..colors["yellow"].."'>[VAPE USER]</font> " .. msg.PrefixText
 			hasTag = true
 			return p
 		end
