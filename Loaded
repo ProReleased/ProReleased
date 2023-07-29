@@ -10709,60 +10709,6 @@ runFunction(function()
 	})
 end)
 
-local function lerpColor(color1, color2, t)
-    return Color3.new(
-        color1.r + (color2.r - color1.r) * t,
-        color1.g + (color2.g - color1.g) * t,
-        color1.b + (color2.b - color1.b) * t
-    )
-end
-
-local function fadeColors(color1, color2, duration)
-    local startTime = tick()
-    while true do
-        local elapsedTime = tick() - startTime
-        local t = math.abs(math.sin(elapsedTime / duration))
-        highlight2.FillColor = lerpColor(color1, color2, t)
-        wait()
-    end
-end
-
-local skidDetected = {}
-runFunction(function()
-    SkidDetector = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-        Name = "HackerDetector",
-        Function = function(callback)
-            if callback then
-				repeat task.wait() until game:IsLoaded()
-                local words = {
-                    "LoveCleint",
-                    "Love Client",
-                    "ware",
-                    "Kingware",
-                    "ColdClient",
-                    "COLD CLIENT",
-                    "Client",
-                    "Private",
-                    "Knox",
-                    "Pistonware",
-                    "TheMagicPiston"   
-                }
-
-                for i, v in pairs(game:GetService("Players"):GetChildren()) do
-                    v.Chatted:Connect(function(msg)
-                        for _, word in ipairs(words) do
-                            if string.find(string.lower(msg), string.lower(word)) and not skidDetected[v.Name] then
-                                skidDetected[v.Name] = true
-                                warningNotification("Vape", v.Name.."Is Using Vape", 100) 
-                                break
-                            end
-                        end
-                    end)
-                end
-            end
-        end
-    })
-end)
 runFunction(function()
 	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
 		Name = "FPSUnlocker",
@@ -10821,26 +10767,6 @@ runFunction(function()
 end)	
 
 runFunction(function()
-	InfiniteJump = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "InfiniteJump",
-		Function = function(callback)
-			if callback then
-
-			end
-		end
-	})
-	game:GetService("UserInputService").JumpRequest:Connect(function()
-		if not InfiniteJump.Enabled then return end
-		local localPlayer = game:GetService("Players").LocalPlayer
-		local character = localPlayer.Character
-		if character and character:FindFirstChildOfClass("Humanoid") then
-			local humanoid = character:FindFirstChildOfClass("Humanoid")
-			humanoid:ChangeState("Jumping")
-		end
-	end)         
-end)
-
-runFunction(function()
 	local hasTeleported = false
 	local TweenService = game:GetService("TweenService")
 
@@ -10859,7 +10785,6 @@ runFunction(function()
 		end
 		return nearestPlayer
 	end
-
 
 	function tweenToNearestPlayer()
 		local nearestPlayer = findNearestPlayer()
@@ -11040,7 +10965,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("I Eat Farts")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("I Use KP+")
 		end
 	end,
 	[".void"] = function()
@@ -11241,7 +11166,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using KP+",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -11278,12 +11203,12 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using KP+",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
 					color = "yellow",
-					tag = "SP+ USER"
+					tag = "KP+ USER"
 				})
 			end
 		end
