@@ -10387,7 +10387,7 @@ runFunction(function()
 		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
-				setfpscap(99999999999999999999)
+				setfpscap(999)
 			end
 		end
 	})
