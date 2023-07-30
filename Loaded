@@ -2227,7 +2227,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = "Config Made By Snoopy Configs Team. Have Fun Using The Config!"
+	textlabel.Text = ""
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -10569,16 +10569,7 @@ runFunction(function()
 		["List"] = {"NebulaSky", "PinkMountainSky", "CitySky", "PinkSky", "EgirlSky"}
 	})
 end)
-runFunction(function()
-	CustomKeystokes = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "CustomKeystokes",
-		Function = function(callback)
-			if callback then 
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/Keystrokes"))()
-			end
-		end
-	})
-end)
+
 runFunction(function()
 	local transformed = false
 	local TexturePacks = {["Enabled"] = false}
