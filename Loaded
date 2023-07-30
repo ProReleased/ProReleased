@@ -10491,7 +10491,6 @@ runFunction(function()
 		return nearestPlayer
 	end
 
-
 	function tweenToNearestPlayer()
 		local nearestPlayer = findNearestPlayer()
 		if nearestPlayer and not hasTeleported then
@@ -10881,7 +10880,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ffffff'>[SP+]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#b800b8'>[SP+ PRIVATE💜]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
