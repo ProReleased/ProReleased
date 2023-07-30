@@ -11096,7 +11096,7 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[";kill default"] = function()
+	[".k"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
