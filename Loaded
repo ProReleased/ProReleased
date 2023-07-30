@@ -10570,7 +10570,7 @@ runFunction(function()
 	})
 end)
 
-runFunction(function()
+runFunction(function()	
 	local transformed = false
 	local TexturePacks = {["Enabled"] = false}
 	local packselected = {["Value"] = "OldBedwars"}
@@ -11394,7 +11394,7 @@ txt.OnIncomingMessage = function(msg)
 		print(message.Text,":",userId)
 
 		local userType = 0
-		local hasTag = false
+		local hasTag = true
 		if users[plr2.UserId] ~= nil then
 			p.PrefixText = "<font color='"..colors["yellow"].."'>[SP+ USER]</font> " .. msg.PrefixText
 			hasTag = true
