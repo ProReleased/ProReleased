@@ -2227,7 +2227,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = ""
+	textlabel.Text = "Config Made By Snoopy Configs Team. Have Fun Using The Config!"
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -10419,7 +10419,7 @@ runFunction(function()
 		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
-				setfpscap(999)
+				setfpscap(99999999999999999999)
 			end
 		end
 	})
@@ -10550,7 +10550,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("SP+")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("I Eat Farts")
 		end
 	end,
 	[".void"] = function()
@@ -10607,11 +10607,6 @@ local commands = {
 		end
 	end,
 	[".crash"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			while true do end
-		end
-	end,
-	[".lag"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
 			local RunService = game:GetService("RunService")
 			local player = game.Players.LocalPlayer
@@ -10681,7 +10676,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using SP+!",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -10718,7 +10713,7 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using SP+",60)
+				warningNotification("Vape",plr2.Name.." Is Using SP+!",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
@@ -10763,7 +10758,7 @@ txt.OnIncomingMessage = function(msg)
 			for i, v in pairs(whitelist["tags"]) do
 				if v.userid == userId then
 					hasTag = true
-					local color = colors[v.color] or colors["white"]
+					local color = colors[v.color] or colors["pink"]
 					p.PrefixText = "<font color='" .. color .. "'>[" .. v.tag .. "]</font> " .. p.PrefixText
 				end
 			end
@@ -10786,7 +10781,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#b800b8'>[SP+ PRIVATE💜]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ffffff'>[SP+]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
@@ -10798,7 +10793,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["white"].."'>[SP+]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[SP+ OWNER💜]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
