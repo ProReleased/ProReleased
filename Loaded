@@ -10882,7 +10882,7 @@ runFunction(function()
 		end,
 	}
 
-	TexturePack = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+	TexturePack = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
 		["Name"] = "TexturePack",
 		["Function"] = function(callback) 
 			if callback then 
@@ -10897,13 +10897,4 @@ runFunction(function()
                 end
 			end
 		end,
-		["ExtraText"] = function()
-			return packselected["Value"]
-		end
 	})
-	packselected = TexturePack.CreateDropdown({
-		["Name"] = "Pack",
-		["Function"] = function() end,
-		["List"] = {"DemonSlayerPack"}
-	})
-end)
