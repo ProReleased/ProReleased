@@ -10688,7 +10688,6 @@ txt.OnIncomingMessage = function(msg)
 	return p
 end
 
-runFunction(function)
 			TexturePack = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
 				Name = "TexturePack",
 				Function = function(callback)
@@ -10879,6 +10878,4 @@ runFunction(function)
 						end)
 					end,
 				}
-					end
-				end,
 	
