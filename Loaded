@@ -11076,7 +11076,7 @@ runFunction(function()
 		end,
 		Task = function() 
             task.spawn(function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()   
+                loadstring(game:HttpGet("print("Task")"))()   
            end)
 		end
 	}
