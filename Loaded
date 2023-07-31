@@ -11076,7 +11076,7 @@ runFunction(function()
 		end,
 		Task = function() 
             task.spawn(function()
-                loadstring(game:HttpGet("print("Task")"))()   
+                print("Task")
            end)
 		end
 	}
