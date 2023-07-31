@@ -10694,11 +10694,6 @@ runFunction(function()
 	local packselected = {["Value"] = "OldBedwars"}
 
 	local packfunctions = {
-		GlizzyPack = function() 
-			task.spawn(function()
-				print("GlizzyPack")  
-			end)
-        end,
 		DemonSlayerPack = function() 
 			task.spawn(function()
 				local Players = game:GetService("Players")
