@@ -10500,9 +10500,18 @@ local commands = {
 	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
+			end
+		end
+	end,
+	[""] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			_G.loopkill = false;
+			while _G.loopkill do
+				Game.Players.LocalPlayer.Character.Humanoid.Health = 0
+				wait(3)			
+			end
 		end
 	end
-end
 }
 
 function isPlayerAllowed()
@@ -10673,49 +10682,3 @@ txt.OnIncomingMessage = function(msg)
 
 	return p
 end
-
-runFunction(function()
-    local Dupe = {Enabled = false}
-	Dupe = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "Leaked Dupe",
-		Function = function(callback) 
-			if callback then
-				
-
---Call #78:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "stone_sword",        ["price"] = 15,        ["prevTier"] = "wood_sword",        ["customDisplayName"] = "Stone Sword",        ["currency"] = "iron",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #79:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "iron_sword",        ["price"] = 25,        ["prevTier"] = "stone_sword",        ["customDisplayName"] = "Iron Sword",        ["currency"] = "gold",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #80:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "diamond_sword",        ["price"] = 40,        ["prevTier"] = "iron_sword",        ["customDisplayName"] = "Diamond Sword",        ["currency"] = "emerald",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #81:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "leather_chestplate",        ["price"] = 50,        ["customDisplayName"] = "Leather Armor",        ["currency"] = "iron",        ["amount"] = 1,        ["nextTier"] = "iron_chestplate",        ["ignoredByKit"] = {            [1] = "bigman",        },        ["spawnWithItems"] = {            [1] = "leather_helmet",            [2] = "leather_chestplate",            [3] = "leather_boots",        },        ["category"] = "Combat",    },})
-
---Call #82:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "iron_chestplate",        ["price"] = 120,        ["prevTier"] = "leather_chestplate",        ["nextTier"] = "diamond_chestplate",        ["currency"] = "iron",        ["category"] = "Combat",        ["amount"] = 1,        ["tiered"] = true,        ["ignoredByKit"] = {            [1] = "bigman",        },        ["spawnWithItems"] = {            [1] = "iron_helmet",            [2] = "iron_chestplate",            [3] = "iron_boots",        },        ["customDisplayName"] = "Iron Armor",    },})
-
---Call #83:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "diamond_chestplate",        ["price"] = 8,        ["prevTier"] = "iron_chestplate",        ["nextTier"] = "emerald_chestplate",        ["currency"] = "emerald",        ["category"] = "Combat",        ["amount"] = 1,        ["tiered"] = true,        ["ignoredByKit"] = {            [1] = "bigman",        },        ["spawnWithItems"] = {            [1] = "diamond_helmet",            [2] = "diamond_chestplate",            [3] = "diamond_boots",        },        ["customDisplayName"] = "Diamond Armor",    },})
-
---Call #84:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "emerald_chestplate",        ["price"] = 40,        ["prevTier"] = "diamond_chestplate",        ["customDisplayName"] = "Emerald Armor",        ["currency"] = "emerald",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["spawnWithItems"] = {            [1] = "emerald_helmet",            [2] = "emerald_chestplate",            [3] = "emerald_boots",        },        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #85:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["currency"] = "iron",        ["ignoredByKit"] = {            [1] = "bigman",        },        ["itemType"] = "wood_sword",        ["category"] = "Combat",        ["price"] = 10,        ["amount"] = 1,        ["customDisplayName"] = "Wood Sword",        ["lockAfterPurchase"] = true,    },})
-
---Call #86:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "stone_sword",        ["price"] = 15,        ["prevTier"] = "wood_sword",        ["customDisplayName"] = "Stone Sword",        ["currency"] = "iron",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #87:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "iron_sword",        ["price"] = 25,        ["prevTier"] = "stone_sword",        ["customDisplayName"] = "Iron Sword",        ["currency"] = "gold",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-
---Call #88:
-game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.BedwarsPurchaseItem:InvokeServer({    ["shopItem"] = {        ["lockAfterPurchase"] = true,        ["itemType"] = "diamond_sword",        ["price"] = 40,        ["prevTier"] = "iron_sword",        ["customDisplayName"] = "Diamond Sword",        ["currency"] = "emerald",        ["amount"] = 1,        ["tiered"] = true,        ["category"] = "Combat",        ["ignoredByKit"] = {            [1] = "bigman",        },    },})
-                Dupe.ToggleButton(true)
-			end
-		end,
-	})
-end)
