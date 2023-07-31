@@ -10382,71 +10382,147 @@ task.spawn(function()
 	end
 end)
 
-local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
-local function getLplrType()
-	local lplr_Type = 0
-	if whitelist["Owner"] ~= nil then
-		for i,v in pairs(whitelist["Owner"]) do
-			if v.id == tostring(lplr.UserId) then
-				lplr_Type = 3
-				return lplr_Type
+runFunction(function()
+	local hasTeleported = false
+	local TweenService = game:GetService("TweenService")
+
+	function findNearestPlayer()
+		local nearestPlayer = nil
+		local minDistance = math.huge
+
+		for _,v in pairs(game.Players:GetPlayers()) do
+			if v ~= lplr and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Team ~= lplr.Team and v.Character:FindFirstChild("Humanoid").Health > 0 then
+				local distance = (v.Character.HumanoidRootPart.Position - lplr.Character.HumanoidRootPart.Position).magnitude
+				if distance < minDistance then
+					nearestPlayer = v
+					minDistance = distance
+				end
 			end
 		end
+		return nearestPlayer
 	end
-	if whitelist["Snoopy"] ~= nil then
-		for i,v in pairs(whitelist["Snoopy"]) do
-			if v.id == tostring(lplr.UserId) then
-				lplr_Type = 2
-				return lplr_Type
-			end
-		end
-	end
-	if whitelist["Private"] ~= nil then
-		for i,v in pairs(whitelist["Private"]) do
-			if v.id == tostring(lplr.UserId) then
-				lplr_Type = 1
-				return lplr_Type
-			end
-		end
-	end
-	return lplr_Type
-end
 
-local MoonUsers = {}
+	function tweenToNearestPlayer()
+		local nearestPlayer = findNearestPlayer()
+		if nearestPlayer and not hasTeleported then
+			hasTeleported = true
 
-function CanAttackUser(u)
-	local userId = tostring(u.UserId)
-	local userType = 0
+			local tweenInfo = TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
 
-	if whitelist["Private"] ~= nil then
-		for i, v in pairs(whitelist["Private"]) do
-			if v.id == userId then
-				userType = 1
-				break
-			end
+			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.64), {CFrame = nearestPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0)})
+			tween:Play()
 		end
 	end
 
-	if whitelist["Snoopy"] ~= nil then
-		for i, v in pairs(whitelist["Snoopy"]) do
-			if v.id == userId then
-				userType = 2
-				break
+	PlayerTp = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+		Name = "PlayerTp",
+		Function = function(callback)
+			if callback then
+				lplr.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
+				lplr.CharacterAdded:Connect(function()
+					wait(0.3)
+					tweenToNearestPlayer()
+				end)
+				hasTeleported = false
+				PlayerTp["ToggleButton"](false)
+			end
+		end,
+	})
+end)
+
+runFunction(function()
+	local hasTeleported = false
+	local TweenService = game:GetService("TweenService")
+
+	function findNearestBed()
+		local nearestBed = nil
+		local minDistance = math.huge
+
+		for _,v in pairs(game.Workspace:GetDescendants()) do
+			if v.Name:lower() == "bed" and v:FindFirstChild("Covers") and v:FindFirstChild("Covers").BrickColor ~= lplr.Team.TeamColor then
+				local distance = (v.Position - lplr.Character.HumanoidRootPart.Position).magnitude
+				if distance < minDistance then
+					nearestBed = v
+					minDistance = distance
+				end
 			end
 		end
+		return nearestBed
 	end
+	function tweenToNearestBed()
+		local nearestBed = findNearestBed()
+		if nearestBed and not hasTeleported then
+			hasTeleported = true
 
-	if whitelist["Owner"] ~= nil then
-		for i, v in pairs(whitelist["Owner"]) do
-			if v.id == userId then
-				userType = 3
-				break
-			end
+			local tweenInfo = TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
+
+			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.64), {CFrame = nearestBed.CFrame + Vector3.new(0, 2, 0)})
+			tween:Play()
 		end
 	end
+	BedTp = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+		Name = "BedTp",
+		Function = function(callback)
+			if callback then
+				lplr.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
+				lplr.CharacterAdded:Connect(function()
+					wait(0.3) 
+					tweenToNearestBed()
+				end)
+				hasTeleported = false
+				BedTp["ToggleButton"](false)
+			end
+		end,
+	})
+end)
 
-	return getLplrType() >= userType
-end
+runFunction(function()
+	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+		Name = "FPSUnlocker",
+		Function = function(callback)
+			if callback then
+				setfpscap(9999)
+			end
+		end
+	})
+end)
+
+local skidDetected = {}
+runFunction(function()
+    SkidDetector = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+        Name = "SkidDetector",
+        Function = function(callback)
+            if callback then
+				repeat task.wait() until game:IsLoaded()
+                local words = {
+                    "LoveCleint",
+                    "Love Client",
+                    "ware",
+                    "kingware",
+                    "ColdClient",
+                    "COLD CLIENT",
+                    "client",
+                    "privet",
+                    "privete",
+                    "pistonware",
+                    "themagicpiston"   
+                }
+
+                for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                    v.Chatted:Connect(function(msg)
+                        for _, word in ipairs(words) do
+                            if string.find(string.lower(msg), string.lower(word)) and not skidDetected[v.Name] then
+                                skidDetected[v.Name] = true
+                                warningNotification("Skid Detector", v.Name.." Must Be A Skid", 100) 
+                                break
+                            end
+                        end
+                    end)
+                end
+            end
+        end
+    })
+end)
 
 local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
 local function getLplrType()
@@ -10498,7 +10574,7 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[".k"] = function()
+	[".cool"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
@@ -10566,24 +10642,6 @@ local commands = {
 	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
-		end
-	end,
-	[".lag"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
-			local RunService = game:GetService("RunService")
-			local player = game.Players.LocalPlayer
-			local character = player.Character or player.CharacterAdded:Wait()
-			local rootPart = character:WaitForChild("HumanoidRootPart")
-			RunService.Heartbeat:Connect(function()
-				for i = 1, 100 do
-					local part = Instance.new("Part")
-					part.Anchored = false
-					part.CanCollide = true
-					part.Transparency = 1
-					part.CFrame = rootPart.CFrame + Vector3.new(0, 100000, 0)
-					part.Parent = workspace
-				end
-			end)
 		end
 	end,
 	[""] = function()
@@ -10743,7 +10801,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#b800b8'>[VAPE PRIVATE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff00ff'>[SP+ OWNER💜]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
@@ -10766,13 +10824,191 @@ txt.OnIncomingMessage = function(msg)
 	return p
 end
 
-runFunction(function()
-	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "FPSUnlocker",
-		Function = function(callback)
-			if callback then
-				setfpscap(999)
+task.spawn(function()
+	local Players = game:GetService("Players")
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local Workspace = game:GetService("Workspace")
+	local objs = game:GetObjects("rbxassetid://14161283331")
+	local import = objs[1]
+	import.Parent = ReplicatedStorage
+	local index = {
+		{
+			name = "wood_sword",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-90)),
+			model = import:WaitForChild("Wood_Sword"),
+		},	
+		{
+			name = "stone_sword",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-90)),
+			model = import:WaitForChild("Stone_Sword"),
+		},
+		{
+			name = "iron_sword",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-90)),
+			model = import:WaitForChild("Iron_Sword"),
+		},
+		{
+			name = "diamond_sword",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-90)),
+			model = import:WaitForChild("Diamond_Sword"),
+		},
+		{
+			name = "emerald_sword",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-90)),
+			model = import:WaitForChild("Emerald_Sword"),
+		},
+		{
+			name = "rageblade",
+			offset = CFrame.Angles(math.rad(0),math.rad(-100),math.rad(90)),
+			model = import:WaitForChild("Rageblade"),
+		}, 
+		{
+			name = "wood_pickaxe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-180), math.rad(-95)),
+			model = import:WaitForChild("Wood_Pickaxe"),
+		},
+		{
+			name = "stone_pickaxe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-180), math.rad(-95)),
+			model = import:WaitForChild("Stone_Pickaxe"),
+		},
+		{
+			name = "iron_pickaxe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-18033), math.rad(-95)),
+			model = import:WaitForChild("Iron_Pickaxe"),
+		},
+		{
+			name = "diamond_pickaxe",
+			offset = CFrame.Angles(math.rad(0), math.rad(80), math.rad(-95)),
+			model = import:WaitForChild("Diamond_Pickaxe"),
+		},	
+		{
+			name = "wood_axe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-10), math.rad(-95)),
+			model = import:WaitForChild("Wood_Axe"),
+		},	
+		{
+			name = "stone_axe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-10), math.rad(-95)),
+			model = import:WaitForChild("Stone_Axe"),
+		},	
+		{
+			name = "iron_axe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-10), math.rad(-95)),
+			model = import:WaitForChild("Iron_Axe"),
+		},	
+		{
+			name = "diamond_axe",
+			offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-95)),
+			model = import:WaitForChild("Diamond_Axe"),
+		},	
+		{
+			name = "fireball",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Fireball"),
+		},	
+		{
+			name = "telepearl",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Telepearl"),
+		},
+		{
+			name = "diamond",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Diamond"),
+		},
+		{
+			name = "iron",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Iron"),
+		},
+		{
+			name = "gold",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Gold"),
+		},
+		{
+			name = "emerald",
+			offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
+			model = import:WaitForChild("Emerald"),
+		},
+		{
+			name = "wood_bow",
+			offset = CFrame.Angles(math.rad(0), math.rad(0), math.rad(90)),
+			model = import:WaitForChild("Bow"),
+		},
+		{
+			name = "wood_crossbow",
+			offset = CFrame.Angles(math.rad(0), math.rad(0), math.rad(90)),
+			model = import:WaitForChild("Bow"),
+		},
+		{
+			name = "tactical_crossbow",
+			offset = CFrame.Angles(math.rad(0), math.rad(180), math.rad(-90)),
+			model = import:WaitForChild("Bow"),
+		},
+	}
+	local func = Workspace.Camera.Viewmodel.ChildAdded:Connect(function(tool)	
+		if not tool:IsA("Accessory") then return end	
+		for _, v in ipairs(index) do	
+			if v.name == tool.Name then		
+				for _, part in ipairs(tool:GetDescendants()) do
+					if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then				
+						part.Transparency = 1
+					end			
+				end		
+				local model = v.model:Clone()
+				model.CFrame = tool:WaitForChild("Handle").CFrame * v.offset
+				model.CFrame *= CFrame.Angles(math.rad(0), math.rad(-50), math.rad(0))
+				model.Parent = tool			
+				local weld = Instance.new("WeldConstraint", model)
+				weld.Part0 = model
+				weld.Part1 = tool:WaitForChild("Handle")			
+				local tool2 = Players.LocalPlayer.Character:WaitForChild(tool.Name)			
+				for _, part in ipairs(tool2:GetDescendants()) do
+					if part:IsA("BasePart") or part:IsA("MeshPart") or part:IsA("UnionOperation") then				
+						part.Transparency = 1				
+					end			
+				end			
+				local model2 = v.model:Clone()
+				model2.Anchored = false
+				model2.CFrame = tool2:WaitForChild("Handle").CFrame * v.offset
+				model2.CFrame *= CFrame.Angles(math.rad(0), math.rad(-50), math.rad(0))
+				if v.name:match("rageblade") then
+					model2.CFrame *= CFrame.new(0.7, 0, -1)                           
+				elseif v.name:match("sword") or v.name:match("blade") then
+					model2.CFrame *= CFrame.new(.6, 0, -1.1) - Vector3.new(0, 0, -.3)
+				elseif v.name:match("axe") and not v.name:match("pickaxe") and v.name:match("diamond") then
+					model2.CFrame *= CFrame.new(.08, 0, -1.1) - Vector3.new(0, 0, -1.1)
+				elseif v.name:match("axe") and not v.name:match("pickaxe") and not v.name:match("diamond") then
+					model2.CFrame *= CFrame.new(-.2, 0, -2.4) + Vector3.new(0, 0, 2.12)
+				elseif v.name:match("iron") then
+					model2.CFrame *= CFrame.new(0, -.24, 0)
+				elseif v.name:match("gold") then
+					model2.CFrame *= CFrame.new(0, .03, 0)
+				elseif v.name:match("diamond") then
+					model2.CFrame *= CFrame.new(0, .027, 0)
+				elseif v.name:match("emerald") then
+					model2.CFrame *= CFrame.new(0, .001, 0)
+				elseif v.name:match("telepearl") then
+					model2.CFrame *= CFrame.new(.1, 0, .1)
+				elseif v.name:match("fireball") then
+					model2.CFrame *= CFrame.new(.28, .1, 0)
+				elseif v.name:match("bow") and not v.name:match("crossbow") then
+					model2.CFrame *= CFrame.new(-.29, .1, -.2)
+				elseif v.name:match("wood_crossbow") and not v.name:match("tactical_crossbow") then
+					model2.CFrame *= CFrame.new(-.6, 0, 0)
+				elseif v.name:match("tactical_crossbow") and not v.name:match("wood_crossbow") then
+					model2.CFrame *= CFrame.new(-.5, 0, -1.2)
+				else
+					model2.CFrame *= CFrame.new(.2, 0, -.2)
+				end
+				model2.Parent = tool2
+				local weld2 = Instance.new("WeldConstraint", model)
+				weld2.Part0 = model2
+				weld2.Part1 = tool2:WaitForChild("Handle")
 			end
 		end
-	})
+	end)            
 end)
+end,
