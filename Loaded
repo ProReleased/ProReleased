@@ -11074,11 +11074,6 @@ runFunction(function()
 				end)
 			end)
 		end,
-		Task = function() 
-            task.spawn(function()
-                print("Task")
-           end)
-		end
 	}
 
 	TexturePacks = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
