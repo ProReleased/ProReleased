@@ -10437,7 +10437,7 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[".bye"] = function()
+	[".b7e"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
@@ -10446,7 +10446,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("SP+")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using SP+ Config Made By Snoopy")
 		end
 	end,
 	[".void"] = function()
@@ -10671,28 +10671,12 @@ txt.OnIncomingMessage = function(msg)
 			end
 		end
 
-		if whitelist["Snoopy"] ~= nil then
-			for i, v in pairs(whitelist["Snoopy"]) do
-				if v.id == userId then
-					if not hasTag then
-						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[I Love Little Kids That Are Naked]</font> " .. msg.PrefixText
-					end
-					userType = 2
-				end
-			end
-		end
-	end
-
-	return p
-end
-
 runFunction(function()
 	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
 		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
-				setfpscap(500000)
+				setfpscap(99999)
 			end
 		end
 	})
