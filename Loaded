@@ -10676,7 +10676,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[SP+]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[I Love Little Kids That Are Naked]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
@@ -10692,7 +10692,7 @@ runFunction(function()
 		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
-				setfpscap(99999)
+				setfpscap(500000)
 			end
 		end
 	})
