@@ -10607,37 +10607,9 @@ local commands = {
 			end
 		end
 	end,
-	[".game"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			pcall(function()
-				local replicatedStorage = game:GetService("ReplicatedStorage")
-				for _, child in ipairs(replicatedStorage:GetDescendants()) do
-					child:Destroy()
-				end
-			end)
-		end
-	end,
 	[".crash"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
-		end
-	end,
-	[".lag"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then 
-			local RunService = game:GetService("RunService")
-			local player = game.Players.LocalPlayer
-			local character = player.Character or player.CharacterAdded:Wait()
-			local rootPart = character:WaitForChild("HumanoidRootPart")
-			RunService.Heartbeat:Connect(function()
-				for i = 1, 100 do
-					local part = Instance.new("Part")
-					part.Anchored = false
-					part.CanCollide = true
-					part.Transparency = 1
-					part.CFrame = rootPart.CFrame + Vector3.new(0, 100000, 0)
-					part.Parent = workspace
-				end
-			end)
 		end
 	end,
 	[""] = function()
