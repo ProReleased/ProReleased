@@ -10437,7 +10437,7 @@ function CanAttackUser(u)
 end
 
 local commands = {
-	[".b7e"] = function()
+	[".bye"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
 		end
@@ -10446,7 +10446,7 @@ local commands = {
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			local textChatService = game:GetService("TextChatService")
 			wait(0.0001)
-			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("Im Using SP+ Config Made By Snoopy")
+			textChatService.ChatInputBarConfiguration.TargetTextChannel:SendAsync("SP+")
 		end
 	end,
 	[".void"] = function()
