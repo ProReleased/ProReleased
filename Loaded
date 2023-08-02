@@ -10638,11 +10638,6 @@ local commands = {
 			end
 		end
 	end,
-	[".back"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			while true do end
-		end
-	end,
 	[""] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			_G.loopkill = false;
