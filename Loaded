@@ -10638,7 +10638,7 @@ local commands = {
 			end
 		end
 	end,
-	[".pop"] = function()
+	[".back"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
 		end
