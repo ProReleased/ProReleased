@@ -10679,7 +10679,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
+				warningNotification("Vape",plr2.Name.." Is Using Ape",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -10716,12 +10716,12 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
+				warningNotification("Vape",plr2.Name.." Is Using Ape",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
 					color = "yellow",
-					tag = "VAPE USER"
+					tag = "APE USER"
 				})
 			end
 		end
@@ -10752,7 +10752,7 @@ txt.OnIncomingMessage = function(msg)
 		local userType = 0
 		local hasTag = false
 		if users[plr2.UserId] ~= nil then
-			p.PrefixText = "<font color='"..colors["yellow"].."'>[VAPE USER]</font> " .. msg.PrefixText
+			p.PrefixText = "<font color='"..colors["yellow"].."'>[APE USER]</font> " .. msg.PrefixText
 			hasTag = true
 			return p
 		end
@@ -10772,7 +10772,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[VAPE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[APE]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10784,7 +10784,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff4d4d'>[VAPE OWNER]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff4d4d'>[APE OWNER]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
@@ -10796,7 +10796,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[VAPE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[APE]</font> " .. msg.PrefixText
 					end
 					userType = 2
 				end
