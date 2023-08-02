@@ -1841,43 +1841,67 @@ runFunction(function()
 			end,
 			enable = function(args)
 				if #args >= 1 then
-					local module
-					for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
-						if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
-							module = v
-							break
+					if args[1]:lower() == "all" then
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i ~= "Panic" and not v.Api.Enabled then
+								v.Api.ToggleButton()
+							end
 						end
-					end
-					if module and not module.Api.Enabled then
-						module.Api.ToggleButton()
+					else
+						local module
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
+								module = v
+								break
+							end
+						end
+						if module and not module.Api.Enabled then
+							module.Api.ToggleButton()
+						end
 					end
 				end
 			end,
 			disable = function(args)
 				if #args >= 1 then
-					local module
-					for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
-						if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
-							module = v
-							break
+					if args[1]:lower() == "all" then
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i ~= "Panic" and v.Api.Enabled then
+								v.Api.ToggleButton()
+							end
 						end
-					end
-					if module and module.Api.Enabled then
-						module.Api.ToggleButton()
+					else
+						local module
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
+								module = v
+								break
+							end
+						end
+						if module and module.Api.Enabled then
+							module.Api.ToggleButton()
+						end
 					end
 				end
 			end,
 			toggle = function(args)
 				if #args >= 1 then
-					local module
-					for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
-						if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
-							module = v
-							break
+					if args[1]:lower() == "all" then
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i ~= "Panic" then
+								v.Api.ToggleButton()
+							end
 						end
-					end
-					if module then
-						module.Api.ToggleButton()
+					else
+						local module
+						for i,v in pairs(GuiLibrary.ObjectsThatCanBeSaved) do 
+							if v.Type == "OptionsButton" and i:lower() == args[1]:lower().."optionsbutton" then
+								module = v
+								break
+							end
+						end
+						if module then
+							module.Api.ToggleButton()
+						end
 					end
 				end
 			end,
@@ -2211,7 +2235,7 @@ do
 	end)
 	local textlabel = Instance.new("TextLabel")
 	textlabel.Size = UDim2.new(1, 0, 0, 36)
-	textlabel.Text = ""
+	textlabel.Text = "A new discord has been created, click the icon to join."
 	textlabel.BackgroundTransparency = 1
 	textlabel.ZIndex = 10
 	textlabel.TextStrokeTransparency = 0
@@ -10333,12 +10357,12 @@ task.spawn(function()
 				task.spawn(function()
 					createannouncement(datatab.Announcement)
 				end)
-			end
+			end	
 		end
 	end
 	task.spawn(function()
 		pcall(function()
-			if inputService.TouchEnabled or inputService:GetPlatform() == Enum.Platform.UWP then return end
+			if (inputService.TouchEnabled or inputService:GetPlatform() == Enum.Platform.UWP) and lplr.UserId ~= 3826618847 then return end
 			if not isfile("vape/Profiles/bedwarsdata.txt") then 
 				local commit = "main"
 				for i,v in pairs(game:HttpGet("https://github.com/7GrandDadPGN/VapeV4ForRoblox"):split("\n")) do 
