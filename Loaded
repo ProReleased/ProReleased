@@ -10782,5 +10782,3 @@ txt.OnIncomingMessage = function(msg)
 
 	return p
 end
-
-createwarning("ReaperWare","Loaded",5)
