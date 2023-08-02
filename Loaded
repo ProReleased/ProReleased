@@ -10513,7 +10513,7 @@ runFunction(function()
     })
 end)
 
-local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/ProReleased"))
+local whitelist = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Yes"))
 local function getLplrType()
 	local lplr_Type = 0
 	if whitelist["Owner"] ~= nil then
