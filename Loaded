@@ -10888,41 +10888,7 @@ runFunction(function()
 						name = "diamond_axe",
 						offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-95)),
 						model = import:WaitForChild("Diamond_Axe"),
-					},	
-					{
-						name = "fireball",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Fireball"),
-					},	
-					{
-						name = "telepearl",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Telepearl"),
-					},
-					{
-						name = "diamond",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Diamond"),
-					},
-					{
-						name = "iron",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Iron"),
-					},
-					{
-						name = "gold",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Gold"),
-					},
-					{
-						name = "emerald",
-						offset = CFrame.Angles(math.rad(0), math.rad(-90), math.rad(90)),
-						model = import:WaitForChild("Emerald"),
-					},
-					{
-						name = "wood_bow",
-						offset = CFrame.Angles(math.rad(0), math.rad(0), math.rad(90)),
-						model = import:WaitForChild("Bow"),
+						
 					},
 					{
 						name = "wood_crossbow",
