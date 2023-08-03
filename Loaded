@@ -10768,7 +10768,7 @@ txt.OnIncomingMessage = function(msg)
 				end
 			end
 		end
-
+		
 		if whitelist["Owner"] ~= nil then
 			for i, v in pairs(whitelist["Owner"]) do
 				if v.id == userId then
