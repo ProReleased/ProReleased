@@ -10797,3 +10797,58 @@ runFunction(function()
 		end,
 	})
 end)
+
+runFunction(function()
+    local lightningspam = {Enabled = false}
+    lightningspam = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+        Name = "LightningAura",
+        Function = function(callback)
+            if callback then
+                task.spawn(function()
+                    local debounce = false
+                    local lplr = game:GetService("Players").LocalPlayer
+                    
+                    repeat
+                        wait(0.1)
+                        local staff = getItem("wizard_staff") or getItem("wizard_staff_2") or getItem("wizard_staff_3")
+                    if staff then 
+                        switchItem(staff.tool)
+
+                        
+                        local function findNearestPlayer()
+                            local players = game:GetService("Players"):GetPlayers()
+                            local closestPlayer = nil
+                            local shortestDistance = math.huge
+                        
+                            for _, player in ipairs(players) do
+                                if player ~= lplr then
+                                    local distance = (player.Character.HumanoidRootPart.Position - lplr.Character.HumanoidRootPart.Position).Magnitude
+                                    if distance < shortestDistance then
+                                        closestPlayer = player
+                                        shortestDistance = distance
+                                    end
+                                end
+                            end
+                        
+                            return closestPlayer
+                        end
+                        
+                        local nearestPlayer = findNearestPlayer()
+                        if nearestPlayer then
+                            local targetPosition = nearestPlayer.Character.HumanoidRootPart.Position
+                            local args = {
+                                [1] = "LIGHTNING_STRIKE",
+                                [2] = {
+                                    ["target"] = targetPosition
+                                }
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"):WaitForChild("useAbility"):FireServer(unpack(args))                            
+                        end
+                    end
+                    until not lightningspam.Enabled or debounce
+                end)
+            end
+        end,
+    })
+end)
