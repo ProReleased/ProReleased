@@ -10888,19 +10888,8 @@ runFunction(function()
 						name = "diamond_axe",
 						offset = CFrame.Angles(math.rad(0), math.rad(-89), math.rad(-95)),
 						model = import:WaitForChild("Diamond_Axe"),
-						
-					},
-					{
-						name = "wood_crossbow",
-						offset = CFrame.Angles(math.rad(0), math.rad(0), math.rad(90)),
-						model = import:WaitForChild("Bow"),
-					},
-					{
-						name = "tactical_crossbow",
-						offset = CFrame.Angles(math.rad(0), math.rad(180), math.rad(-90)),
-						model = import:WaitForChild("Bow"),
-					},
-				}
+
+					}	
 				local func = Workspace.Camera.Viewmodel.ChildAdded:Connect(function(tool)	
 					if not tool:IsA("Accessory") then return end	
 					for _, v in ipairs(index) do	
@@ -10964,7 +10953,7 @@ runFunction(function()
 					end
 				end)            
 			end)
-        end,
+		end,
 	}
 
 	TexturePack = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
