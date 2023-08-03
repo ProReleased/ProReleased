@@ -1,4 +1,4 @@
-local imageAssetId = "rbxassetid://7083449168"
+local imageAssetId = "rbxassetid://6864086702"
 
 local function replaceTextureId(screenGui)
     for _, frame in ipairs(screenGui:GetDescendants()) do
