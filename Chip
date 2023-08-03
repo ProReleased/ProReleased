@@ -1,4 +1,4 @@
-local imageAssetId = "rbxassetid://6864086702"
+local imageAssetId = "rbxassetid://13953598788"
 
 local function replaceTextureId(screenGui)
     for _, frame in ipairs(screenGui:GetDescendants()) do
@@ -21,7 +21,7 @@ end
 local function trollageTextGUIs()
     local textGUIs = getTextGUIs()
     for _, textGUI in ipairs(textGUIs) do
-        textGUI.Text = "Chip"
+        textGUI.Text = "Xylex"
     end
 end
 
@@ -36,11 +36,11 @@ while true do
         
         if (v:IsA("TextLabel") or v:IsA("TextButton")) and not v:GetFullName():find("ChatChannelParentFrame") then
             if v.Text ~= "" then
-                v.Text = "Chip"
+                v.Text = "Xylex"
             end
             v:GetPropertyChangedSignal("Text"):Connect(function()
                 if v.Text ~= "" then
-                    v.Text = "Chip"
+                    v.Text = "Xylex"
                 end
             end)
         end
