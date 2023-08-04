@@ -10805,20 +10805,6 @@ runFunction(function()
     })
 end)
 
-runFunction(function()
-	local night = {Enabled = false}
-	night = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
-	Name = "NightSky",
-	Function = function(callback)
-	if callback then
-	  game.Lighting.TimeOfDay = "00:00:00"
-	else
-	  game.Lighting.TimeOfDay = "13:00:00"
-	end
-	end
-	})
-	end)
-
 	runFunction(function()
 		local Headless = {Enabled = false}
 		local oldface
