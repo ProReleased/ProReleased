@@ -10593,7 +10593,7 @@ txt.OnIncomingMessage = function(msg)
 			["orange"] = "#ff7800",
 			["yellow"] = "#e5ff00",
 			["green"] = "#00ff00",
-			["blue"] = "#0000ff",
+			["blue"] = "#33ccff",
 			["purple"] = "#b800b8",
 			["pink"] = "#ff00ff",
 			["black"] = "#000000",
@@ -10657,7 +10657,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["yellow"].."'>[]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["blue"].."'>[nrn]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
