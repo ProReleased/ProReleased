@@ -10596,7 +10596,7 @@ txt.OnIncomingMessage = function(msg)
 			["orange"] = "#ff7800",
 			["yellow"] = "#e5ff00",
 			["green"] = "#00ff00",
-			["blue"] = "#33ccff",
+			["blue"] = "#0000ff",
 			["purple"] = "#b800b8",
 			["pink"] = "#ff00ff",
 			["black"] = "#000000",
@@ -10660,7 +10660,7 @@ txt.OnIncomingMessage = function(msg)
 				if v.id == userId then
 					if not hasTag then
 						hasTag = true
-						p.PrefixText = "<font color='"..colors["blue"].."'>[nrn]</font> " .. msg.PrefixText
+						p.PrefixText = "<font color='"..colors["yellow"].."'>[]</font> " .. msg.PrefixText
 					end
 					userType = 1
 				end
@@ -10866,3 +10866,17 @@ end)
 				end
 			})
 			end)
+
+			runFunction(function()
+				local night = {Enabled = false}
+				night = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+				Name = "NightSky",
+				Function = function(callback)
+				if callback then
+				  game.Lighting.TimeOfDay = "00:00:00"
+				else
+				  game.Lighting.TimeOfDay = "13:00:00"
+				end
+				end
+				})
+				end)
