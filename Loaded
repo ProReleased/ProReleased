@@ -3595,6 +3595,9 @@ runFunction(function()
 	local originalNeckC0
 	local originalRootC0
 	local anims = {
+		Block = {
+			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.00001}
+		},
 		Normal = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(295), math.rad(55), math.rad(290)), Time = 0.05},
 			{CFrame = CFrame.new(0.69, -0.71, 0.6) * CFrame.Angles(math.rad(200), math.rad(60), math.rad(1)), Time = 0.05}
@@ -10681,15 +10684,18 @@ txt.OnIncomingMessage = function(msg)
 end
 
 runFunction(function()
-	FPSUnlocker = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
-		Name = "FPSUnlocker",
-		Function = function(callback)
-			if callback then
-				setfpscap(5050505050)
-			end
-		end
+	local fpsunlocker = {Enabled = false}
+	fpsunlocker = GuiLibrary["ObjectsThatCanBeSaved"]["WorldWindow"]["Api"].CreateOptionsButton({
+	Name = "FPSUnlocker",
+	Function = function(callback)
+	if callback then
+	  setfpscap(9e9)
+	else
+	  setfpscap(60)
+	end
+	end
 	})
-end)
+	end)
 
 runFunction(function()
 	local hasTeleported = false
@@ -10784,3 +10790,127 @@ runFunction(function()
 		end,
 	})
 end)
+
+runFunction(function()
+    local Chat = {["Enabled"] = false}
+    Chat = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "ChatMover",
+        ["Function"] = function(callback)
+            if callback then
+                game:GetService("TextChatService").ChatWindowConfiguration.VerticalAlignment = "Bottom"
+            else
+				game:GetService("TextChatService").ChatWindowConfiguration.VerticalAlignment = "Top"
+            end
+        end
+    })
+end)
+
+runFunction(function()
+	local night = {Enabled = false}
+	night = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+	Name = "NightSky",
+	Function = function(callback)
+	if callback then
+	  game.Lighting.TimeOfDay = "00:00:00"
+	else
+	  game.Lighting.TimeOfDay = "13:00:00"
+	end
+	end
+	})
+	end)
+
+	runFunction(function()
+		local Headless = {Enabled = false}
+		local oldface
+		local function applyHeadless()
+			repeat task.wait() until entityLibrary.isAlive or not Headless.Enabled
+			if entityLibrary.isAlive and Headless.Enabled then
+				entityLibrary.character.Head.Transparency = 1
+				local face = entityLibrary.character.Head:FindFirstChild("face")
+				if face then
+					oldface = face
+					face.Parent = game
+				end
+			end
+		end
+		
+		Headless = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+			Name = "RemoveHead",
+			Function = function(callback)
+				if callback then
+					table.insert(Headless.Connections, lplr.CharacterAdded:Connect(applyHeadless))
+					task.spawn(applyHeadless)
+				else
+					if entityLibrary.isAlive then
+						entityLibrary.character.Head.Transparency = 0
+						if oldface then
+							oldface.Parent = entityLibrary.character.Head
+						end
+					end
+				end
+			end
+		})
+		end)
+
+		runFunction(function()
+			local KillFeed = {["Enabled"] = false}
+			local container
+			
+			KillFeed = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+				["Name"] = "RemoveFeed",
+				["Function"] = function(callback)
+					if callback then
+						task.spawn(function()
+							if container == nil then
+								repeat
+									local suc, res = pcall(function() return lplr.PlayerGui.KillFeedGui.KillFeedContainer end)
+									if suc then
+										container = res
+									end
+									task.wait()
+								until container ~= nil
+							end
+							container.Visible = false
+						end)
+					else
+						if container then
+							container.Visible = true
+						end
+					end
+				end
+			})
+			end)
+
+			runFunction(function()
+				local infJumpConnection
+				local infjump = {["Enabled"] = false}
+				infjump = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+					["Name"] = "InfiniteJump",
+					["Function"] = function(callback) 
+						if callback then    
+							infJumpConnection = inputService.InputBegan:Connect(function(input)
+								if input.KeyCode == Enum.KeyCode.Space and not inputService:GetFocusedTextBox() then
+									if InfHold.Enabled and entityLibrary.isAlive then 
+										repeat 
+										lplr.Character:WaitForChild("Humanoid"):ChangeState("Jumping")
+										task.wait()
+										until not inputService:IsKeyDown(Enum.KeyCode.Space) or not infjump.Enabled or not InfHold.Enabled or inputService:GetFocusedTextBox()
+									else 
+										if entityLibrary.isAlive then 
+												lplr.Character:WaitForChild("Humanoid"):ChangeState("Jumping")
+											end 
+										end 
+									end
+								end)
+							else
+								if infJumpConnection then
+									infJumpConnection:Disconnect()
+								end
+							end
+						end
+					})
+					InfHold = infjump.CreateToggle({
+						["Name"] = "Hold",
+						["Function"] = function() end
+					})
+				end)
