@@ -10723,7 +10723,7 @@ runFunction(function()
 
 			local tweenInfo = TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
 
-			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.95), {CFrame = nearestBed.CFrame + Vector3.new(0, 2, 0)})
+			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.94), {CFrame = nearestBed.CFrame + Vector3.new(0, 2, 0)})
 			tween:Play()
 		end
 	end
@@ -10770,7 +10770,7 @@ runFunction(function()
 
 			local tweenInfo = TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
 
-			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.95), {CFrame = nearestPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0)})
+			local tween = TweenService:Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.94), {CFrame = nearestPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0)})
 			tween:Play()
 		end
 	end
@@ -10890,7 +10890,7 @@ end)
 						Function = function(callback)
 							if callback then 
 								task.spawn(function()	
-									repeat task.wait(0.3) 
+									repeat task.wait(0.3)
 									replicatedStorageService:WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("DragonBreath"):FireServer({player = lplr})
 									until (not DragonBreathFunny.Enabled)
 								end)
