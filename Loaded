@@ -10866,17 +10866,3 @@ end)
 				end
 			})
 			end)
-
-			runFunction(function()
-				local performed = false
-				InfiniteJump = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-					Name = "InfiniteJump",
-					Function = function(callback)
-						if callback then
-							game:GetService("UserInputService").JumpRequest:Connect(function()
-								game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
-							end)
-						end
-					end
-				})
-			end)
