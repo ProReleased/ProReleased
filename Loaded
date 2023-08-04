@@ -10523,7 +10523,6 @@ local commands = {
 	end,
 }
 
-
 function isPlayerAllowed()
 	return false
 end
