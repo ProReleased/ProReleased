@@ -10662,11 +10662,10 @@ txt.OnIncomingMessage = function(msg)
 						hasTag = true
 						p.PrefixText = "<font color='#33ccff'>[nrn]</font> " .. msg.PrefixText
 					end
-					userType = 3
+					userType = 1
 				end
 			end
 		end
-	end
 
 		if whitelist["Owner"] ~= nil then
 			for i, v in pairs(whitelist["Owner"]) do
