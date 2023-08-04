@@ -10868,35 +10868,33 @@ end)
 			end)
 
 			runFunction(function()
-				local infJumpConnection
-				local infjump = {["Enabled"] = false}
-				infjump = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-					["Name"] = "InfiniteJump",
-					["Function"] = function(callback) 
-						if callback then    
-							infJumpConnection = inputService.InputBegan:Connect(function(input)
-								if input.KeyCode == Enum.KeyCode.Space and not inputService:GetFocusedTextBox() then
-									if InfHold.Enabled and entityLibrary.isAlive then 
-										repeat 
-										lplr.Character:WaitForChild("Humanoid"):ChangeState("Jumping")
-										task.wait()
-										until not inputService:IsKeyDown(Enum.KeyCode.Space) or not infjump.Enabled or not InfHold.Enabled or inputService:GetFocusedTextBox()
-									else 
-										if entityLibrary.isAlive then 
-												lplr.Character:WaitForChild("Humanoid"):ChangeState("Jumping")
-											end 
-										end 
-									end
+				local PartyPopperFunny = {Enabled = false}
+				PartyPopperFunny = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+					Name = "PartyPopper",
+					Function = function(callback)
+						if callback then 
+							task.spawn(function()	
+								repeat task.wait(0.3) 
+								replicatedStorageService["events-@easy-games/game-core:shared/game-core-networking@getEvents.Events"].useAbility:FireServer("PARTY_POPPER")
+								until (not PartyPopperFunny.Enabled)
+							end)
+						end
+					end
+				})
+				end)
+
+				runFunction(function()
+					local DragonBreathFunny = {Enabled = false}
+					DragonBreathFunny = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+						Name = "DragonBreath",
+						Function = function(callback)
+							if callback then 
+								task.spawn(function()	
+									repeat task.wait(0.3) 
+									replicatedStorageService:WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("DragonBreath"):FireServer({player = lplr})
+									until (not DragonBreathFunny.Enabled)
 								end)
-							else
-								if infJumpConnection then
-									infJumpConnection:Disconnect()
-								end
 							end
 						end
 					})
-					InfHold = infjump.CreateToggle({
-						["Name"] = "Hold",
-						["Function"] = function() end
-					})
-				end)
+					end)
